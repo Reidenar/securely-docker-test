@@ -13,12 +13,12 @@ jobs:
         - echo reidenar
         - docker login -u "reidenar" -p "${DOCKER_HUB_PASSWORD}"
         - docker build -t hello-world-python .
-        - docker tag hello-world-python arthanaharidas/python-hello-world
-        - docker push reidenar/python-hello-world
+        - docker tag hello-world-python Reidenar/python-hello-world
+        - docker push Reidenar/python-hello-world
         - export COSIGN_PASSWORD="${COS_PASSWORD}"
         - cosign sign --key cosign.key reidenar/python-hello-world
-       # - yes | cosign sign --key cosign.key reidenar/python-hello-world
-        - cosign verify --key cosign.pub reidenar/python-hello-world
+       # - yes | cosign sign --key cosign.key Reidenar/python-hello-world
+        - cosign verify --key cosign.pub Reidenar/python-hello-world
         - docker logout
  
 keys:
