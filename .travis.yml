@@ -10,7 +10,7 @@ jobs:
   include:
     - stage: "sleep 109"
       script:
-        - echo arthanaharidas
+        - echo reidenar
         - docker login -u "reidenar" -p "${DOCKER_HUB_PASSWORD}"
         - docker build -t hello-world-python .
         - docker tag hello-world-python arthanaharidas/python-hello-world
