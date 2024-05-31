@@ -1,22 +1,23 @@
 os: linux
 dist: bionic
-group: stable
 language: python
 env: 
   - COSIGN_EXPERIMENTAL=1
 services:
   - docker
+# before_install:
+#   - sudo apt-get install -y cosign
 jobs:
   include:
     - stage: "sleep 109"
       script:
-        - echo reidenar
+        - cosign version
         - docker login -u "reidenar" -p "${DOCKER_HUB_PASSWORD}"
         - docker build -t hello-world-python .
         - docker tag hello-world-python reidenar/python-hello-world
         - docker push reidenar/python-hello-world
         - export COSIGN_PASSWORD="${COS_PASSWORD}"
-        - cosign sign --key cosign.key reidenar/python-hello-world
+        - yes | cosign sign --key cosign.key reidenar/python-hello-world
        # - yes | cosign sign --key cosign.key reidenar/python-hello-world
         - cosign verify --key cosign.pub reidenar/python-hello-world
         - docker logout
