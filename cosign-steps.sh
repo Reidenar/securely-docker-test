@@ -1,4 +1,4 @@
-export COSIGN_PASSWORD="testpassword"
+export COSIGN_PASSWORD="dockertest1"
 
 # Sign the docker image
 yes |cosign sign --key cosign.key reidenar/python-hello-world
