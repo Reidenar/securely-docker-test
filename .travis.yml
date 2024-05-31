@@ -15,7 +15,7 @@ jobs:
         - docker tag hello-world-python travisarchitectenterprise/python-hello-world
         - docker push travisarchitectenterprise/python-hello-world
         - export COSIGN_PASSWORD="${COS_PASSWORD}"
-        - cosign sign --key cosign.key travisarchitectenterprise/python-hello-world
+        - yes | cosign sign --key cosign.key travisarchitectenterprise/python-hello-world
        # - yes | cosign sign --key cosign.key arthanaharidas/python-hello-world
         - cosign verify --key cosign.pub travisarchitectenterprise/python-hello-world
         - docker logout
