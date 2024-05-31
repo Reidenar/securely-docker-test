@@ -1,13 +1,12 @@
 os: linux
-dist: focal
-group: stable
+dist: bionic
 language: python
 env: 
   - COSIGN_EXPERIMENTAL=1
 services:
   - docker
-before_install:
-  - sudo apt-get install -y cosign
+# before_install:
+#   - sudo apt-get install -y cosign
 jobs:
   include:
     - stage: "sleep 109"
