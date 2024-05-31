@@ -10,15 +10,14 @@ jobs:
   include:
     - stage: "sleep 109"
       script:
-        - echo arthanaharidas
-        - docker login -u "arthanaharidas" -p "${DOCKER_HUB_PASSWORD}"
+        - docker login -u "travisarchitectenterprise" -p "${DOCKER_HUB_PASSWORD}"
         - docker build -t hello-world-python .
-        - docker tag hello-world-python arthanaharidas/python-hello-world
-        - docker push arthanaharidas/python-hello-world
+        - docker tag hello-world-python travisarchitectenterprise/python-hello-world
+        - docker push travisarchitectenterprise/python-hello-world
         - export COSIGN_PASSWORD="${COS_PASSWORD}"
-        - cosign sign --key cosign.key arthanaharidas/python-hello-world
+        - cosign sign --key cosign.key travisarchitectenterprise/python-hello-world
        # - yes | cosign sign --key cosign.key arthanaharidas/python-hello-world
-        - cosign verify --key cosign.pub arthanaharidas/python-hello-world
+        - cosign verify --key cosign.pub travisarchitectenterprise/python-hello-world
         - docker logout
  
 keys:
