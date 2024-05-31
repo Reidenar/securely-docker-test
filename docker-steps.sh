@@ -8,4 +8,4 @@ docker build -t hello-world-python .
 docker tag hello-world-python Reidenar/python-hello-world
 
 # Push the docker image
-docker push reidenar/python-hello-world
+docker push Reidenar/python-hello-world
